@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TMATC Meeting Agenda Generator</title>
+        <meta name="viewport" contentta="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A simple Meeting Agenda Generator for TCS Matiree Adibatla Toastmasters Club, Hyderabad.">
+        <meta name="keywords" content="Toastmasters, Agenda, Meeting, TMATC, TCS Maitree, Adibalta">
+        <meta name="author" content="Ihsaan Muhiyadheen">
+        <base target='_blank' />
+        <link rel="icon" href="../TMLogo.png" type="image/gif" sizes="16x16">
+    <style>
+        *{
+            font-family: Gotham;
+        }
+        /* .SpeakerEvaluator4, .SpeakerEvaluator5, .SpeakerEvaluator6, .SpeakerEvaluator7, .SpeakerEvaluator8{
+            display: none;
+        } */
+        .required_field{
+            color: red;
+        }
+        .empty-tr{
+            height: 10px;
+        }
+        body{
+            display:block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%; 
+        }
+        th{
+            margin-bottom: 50px;
+            font-size: x-large;
+            color: #004165;
+        }
+        input[type=submit]{
+            background-color: #772432;
+            margin: auto;
+            width: 50%;
+            display:block;
+            color: white;
+            font-weight: bold;
+        }
+        a:visited{
+            color:blue;
+        }
+        a{
+            font-style: italic;
+        }
+    </style>
+    </head>
+    <body>
+        <div id="test"></div>
+        <form action="tmatc_agenda_output.php" method="POST">
+            <table>
+                <th colspan="3">
+                    TMATC Meeting Agenda Input Form
+                </th>
+                <tr class="empty-tr"></tr>
+                <tr>
+                <tr>
+                    <td colspan="3" style="text-align: center;"><a href="TMATC Sample Agenda.pdf">To view a sample agenda, click here.</a></td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center;"><a href="https://tmtc-agenda-generator.000webhostapp.com/">To go to TMTC Agenda generator, click here.</a></td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center;"><a href="https://tmtc-agenda-generator.000webhostapp.com/gsc">To go to GSC Agenda generator, click here.</a></td>
+                </tr>
+                <tr class="empty-tr"></tr>
+                <tr>
+                    
+                <tr>
+                    <td><div>Meeting Number: <span class="required_field">*</span> </div></td>
+                    <td><div><input type="number" name="meeting_no" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Venue: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="meeting_venue" required value="Online Meeting"></div></td>
+                </tr>
+                <!-- <tr>
+                    <td><div>Date: <span class="required_field">*</span></div></td>
+                    <td><div><input type="date" name="meeting_date" id="meeting_date" required></div></td>
+                </tr> -->
+                <tr>
+                    <td><div>Date: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="meeting_date" id="meeting_date" placeholder = "27th June 2020, Saturday" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Time: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="meeting_time" id="meeting_date" required value="10:30am - 12:30pm"></div></td>
+                </tr>
+                
+                <tr>
+                    <td><div>Theme: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="meeting_theme" required></div></td>
+                </tr>
+                <tr class="empty-tr"></tr>
+                <tr>
+                    <td><div>Roles Players Briefing: <span class="required_field">*</span></div></td>
+                    <td></td>
+                    <td><div><input type="time" name="role_players_time" value="10:00" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Zoom Master: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="tech_master" required></div></td>
+                    <td><div><input type="time" name="tech_master_time" value="10:15" required></div></td>
+                </tr>
+                <tr class="empty-tr"></tr>
+                <tr>
+                <tr>
+                    <td><div>Sergeant At Arms: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="saa" required></div></td>
+                    <td><div><input type="time" name="saa_time" value="10:30" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Presiding Officer: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="po" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Toastmaster of the Day: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="tmod" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>TMOD 2nd section: <span class="required_field">*</span></div></td>
+                    <td></td>
+                    <td><div><input type="time" name="tmod_time2" value="11:25" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>TMOD 3rd section: <span class="required_field">*</span></div></td>
+                    <td></td>
+                    <td><div><input type="time" name="tmod_time3" value="11:50" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Grammarian: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="grammarian" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Timer: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="timer" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Ah Counter: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="ac" required></div></td>
+                </tr>
+                <tr class="empty-tr"></tr>
+                <tr>
+                <tr>
+                    <td><div>Prepared Speeches:</div></td>
+                    <td><div></div></td>
+                    <td><div><input type="time" name="prep_speeches_time" value="10:45" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Speaker 1: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="sp1_name" placeholder="Speaker's Name" required></div></td>
+                    <td><div><input type="text" name="sp1_title" placeholder="Speech Title" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Speaker 2: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="sp2_name" placeholder="Speaker's Name" required></div></td>
+                    <td><div><input type="text" name="sp2_title" placeholder="Speech Title" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Speaker 3:</div></td>
+                    <td><div><input type="text" name="sp3_name" placeholder="Speaker's Name"></div></td>
+                    <td><div><input type="text" name="sp3_title" placeholder="Speech Title"></div></td>
+                </tr>
+                <tr class="SpeakerEvaluator4">
+                    <td><div>Speaker 4:</div></td>
+                    <td><div><input type="text" name="sp4_name" placeholder="Speaker's Name"></div></td>
+                    <td><div><input type="text" name="sp4_title" placeholder="Speech Title"></div></td>
+                </tr>
+                <tr class="SpeakerEvaluator5">
+                    <td><div>Speaker 5:</div></td>
+                    <td><div><input type="text" name="sp5_name" placeholder="Speaker's Name"></div></td>
+                    <td><div><input type="text" name="sp5_title" placeholder="Speech Title"></div></td>
+                </tr>
+                <tr class="SpeakerEvaluator6">
+                    <td><div>Speaker 6:</div></td>
+                    <td><div><input type="text" name="sp6_name" placeholder="Speaker's Name"></div></td>
+                    <td><div><input type="text" name="sp6_title" placeholder="Speech Title"></div></td>
+                </tr>
+                <tr class="SpeakerEvaluator7">
+                    <td><div>Speaker 7:</div></td>
+                    <td><div><input type="text" name="sp7_name" placeholder="Speaker's Name"></div></td>
+                    <td><div><input type="text" name="sp7_title" placeholder="Speech Title"></div></td>
+                </tr>
+                <tr class="SpeakerEvaluator8">
+                    <td><div>Speaker 8:</div></td>
+                    <td><div><input type="text" name="sp8_name" placeholder="Speaker's Name"></div></td>
+                    <td><div><input type="text" name="sp8_title" placeholder="Speech Title"></div></td>
+                </tr>
+                <tr class="empty-tr"></tr>
+                <tr>
+                <tr>
+                    <td><div>Table Topics Round:</div></td>
+                    <td><div><input type="text" name="ttm" placeholder="Table Topics Master"></div></td>
+                    <td><div><input type="time" name="ttm_time" value="11:30">&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" name="ttm_include" id="ttm_include" checked value="ttmYes"> Include?</div></td> 
+                </tr>
+                <tr class="empty-tr"></tr>
+                <tr>
+                <tr>
+                    <td><div>Evaluation:</div></td>
+                    <td><div></div></td>
+                    <td><div><input type="time" name="ev_time" value="11:55" required></div></td>
+                </tr>
+                
+                <tr>
+                    <td><div>General Evaluator: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="ge" required></div></td>
+                </tr>
+
+                <tr>
+                    <td><div>Evaluator 1: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="ev1_name" placeholder="Evaluator's Name" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Evaluator 2: <span class="required_field">*</span></div></td>
+                    <td><div><input type="text" name="ev2_name" placeholder="Evaluator's Name" required></div></td>
+                </tr>
+                <tr>
+                    <td><div>Evaluator 3:</div></td>
+                    <td><div><input type="text" name="ev3_name" placeholder="Evaluator's Name"></div></td>
+                </tr>
+                <tr class="SpeakerEvaluator4">
+                    <td><div>Evaluator 4:</div></td>
+                    <td><div><input type="text" name="ev4_name" placeholder="Evaluator's Name"></div></td>
+                </tr>
+                <tr class="SpeakerEvaluator5">
+                    <td><div>Evaluator 5:</div></td>
+                    <td><div><input type="text" name="ev5_name" placeholder="Evaluator's Name"></div></td>
+                </tr>
+                <tr class="SpeakerEvaluator6">
+                    <td><div>Evaluator 6:</div></td>
+                    <td><div><input type="text" name="ev6_name" placeholder="Evaluator's Name"></div></td>
+                </tr>
+                <tr class="SpeakerEvaluator7">
+                    <td><div>Evaluator 7:</div></td>
+                    <td><div><input type="text" name="ev7_name" placeholder="Evaluator's Name"></div></td>
+                </tr>
+                <tr class="SpeakerEvaluator8">
+                    <td><div>Evaluator 8:</div></td>
+                    <td><div><input type="text" name="ev8_name" placeholder="Evaluator's Name"></div></td>
+                </tr>
+                <tr class="empty-tr"></tr>
+                <tr>
+                <tr>
+                    <td><div>Presiding Officer's</div><div>Closing Remarks: <span class="required_field">*</span></div></td>
+                    <td><div></div></td>
+                    <td><div><input type="time" name="po_closing_time" value="12:25" required></div></td>
+                </tr>
+                <tr class="empty-tr"></tr>
+                <tr>
+                <tr>
+                    <td><div>Meeting Adjourned: <span class="required_field">*</span></div></td>
+                    <td><div></div></td>
+                    <td><div><input type="time" name="meeting_adj_time" value="12:30" required></div></td>
+                </tr>
+                <tr class="empty-tr"></tr>
+                <tr>
+                <tr>
+                    <td colspan="3"><input type="submit" name="submit_form" id="submit_form"></td>
+                </tr>
+            </table>
+            <!-- <button type="button" onclick="addSpeaker()">Add Speaker</button>
+            <button type="button" onclick="deleteSpeaker()">Delete Speaker</button> -->
+            
+        </form>
+        <footer style="margin-top: 10px; font-weight: 500; font-size: small; text-align: center;">Created by Ihsaan Muhiyadheen: <a href="https://www.facebook.com/ihsaanm97">Facebook</a> | <a href="https://www.instagram.com/ihsaanm97">Instagram</a> | <a href="https://www.twitter.com/ihsaanm97">Twitter</a> | <a href="https://www.linkedin.com/in/ihsaanm97/">LinkedIn</a></footer>
+    </body>
+    <!-- <script>
+        var addSpeaker = () => {
+            var newitem = document.createElement('div');
+            var textfield = document.createElement('input');
+            newitem.setAttribute('class','itembox');
+            textfield.setAttribute('class','item');
+            newitem.appendChild(textfield);
+            document.getElementsByClassName('wrapperbox')[0].appendChild(newitem);
+        }
+        function addSpeaker()
+        {
+            var SpeakerEvaluator4 = document.getElementsByClassName("SpeakerEvaluator4");
+            var SpeakerEvaluator5 = document.getElementsByClassName("SpeakerEvaluator5");
+            var SpeakerEvaluator6 = document.getElementsByClassName("SpeakerEvaluator6");
+            var SpeakerEvaluator7 = document.getElementsByClassName("SpeakerEvaluator7");
+            var SpeakerEvaluator8 = document.getElementsByClassName("SpeakerEvaluator8");
+
+            if(SpeakerEvaluator4[0].style.display == "" && SpeakerEvaluator4[1].style.display == "")
+            {
+                alert("inside if ");
+                SpeakerEvaluator4[0].style.display = "inline-block";
+                SpeakerEvaluator4[1].style.display = "initial";
+            }
+            else if(SpeakerEvaluator5[0].style.display == "none" && SpeakerEvaluator5[1].style.display == "none")
+            {
+                alert("inside else if");
+                SpeakerEvaluator5[0].style.display = "block";
+                SpeakerEvaluator5[1].style.display = "block";
+            }
+            else 
+            {
+                alert("inside else ");
+                SpeakerEvaluator6[0].style.display = "initial";
+                SpeakerEvaluator6[1].style.display = "initial";
+            }
+
+
+           
+                
+        }
+        function deleteSpeaker(){
+
+        }
+    </script> -->
+</html>
